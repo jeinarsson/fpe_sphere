@@ -1,0 +1,537 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     16748,        528]
+NotebookOptionsPosition[     15153,        470]
+NotebookOutlinePosition[     15521,        486]
+CellTagsIndexPosition[     15478,        483]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Solve sparse matrix equations", "Title",
+ CellChangeTimes->{{3.5793498573837013`*^9, 3.579349861126915*^9}}],
+
+Cell["Solve for the steady state", "Section",
+ CellChangeTimes->{{3.5793499137759266`*^9, 3.5793499170951166`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Function for solving for one instance of parameters\
+\>", "Subtitle",
+ CellChangeTimes->{{3.5793503102286024`*^9, 3.5793503195641365`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"sparseindex", "[", 
+    RowBox[{"l_Integer", ",", "m_Integer"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"m", "+", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox["l", "2"], ")"}], "2"], "-", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "m"}], ")"}], " ", 
+      RowBox[{"KroneckerDelta", "[", 
+       RowBox[{"0", ",", "m"}], "]"}]}]}], "/;", 
+    RowBox[{
+     RowBox[{"EvenQ", "[", "l", "]"}], "&&", 
+     RowBox[{"EvenQ", "[", "m", "]"}]}]}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"solveAugmented", "[", 
+    RowBox[{"num\[Lambda]_", ",", "numinvPe_", ",", "numStEff_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"parameters", ",", "matrix", ",", "b", ",", "x"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"PrintTemporary", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"\"\<\[Lambda]: \>\"", ",", " ", 
+         RowBox[{"ToString", "[", 
+          RowBox[{"num\[Lambda]", "//", "N"}], "]"}], ",", " ", 
+         "\"\<, invPe: \>\"", ",", " ", 
+         RowBox[{"ToString", "[", 
+          RowBox[{"numinvPe", "//", "N"}], "]"}], ",", " ", 
+         "\"\< and stEff: \>\"", ",", " ", 
+         RowBox[{"ToString", "[", 
+          RowBox[{"numStEff", "//", "N"}], "]"}]}], "]"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"parameters", " ", "=", " ", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"\[Lambda]", "\[Rule]", "num\[Lambda]"}], ",", 
+         RowBox[{"\[CapitalLambda]", "\[Rule]", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"num\[Lambda]", "^", "2"}], "-", "1"}], ")"}], "/", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"num\[Lambda]", "^", "2"}], "+", "1"}], ")"}]}]}], ",", 
+         RowBox[{"invPe", "\[Rule]", "numinvPe"}], ",", 
+         RowBox[{"stEff", "\[Rule]", "numStEff"}]}], "}"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"matrix", "=", 
+       RowBox[{"SparseArray", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"ArrayRules", "[", "sparseAugmented", "]"}], "/.", 
+            "parameters"}], ")"}], "/.", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"pos_", "\[Rule]", "val_"}], ")"}], "\[RuleDelayed]", 
+            RowBox[{"(", 
+             RowBox[{"pos", "\[Rule]", 
+              RowBox[{"N", "[", "val", "]"}]}], ")"}]}], "}"}]}], ",", 
+         RowBox[{"Dimensions", "[", "sparseAugmented", "]"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"b", "=", 
+       RowBox[{"N", "[", 
+        RowBox[{"augmentedB", "/.", "parameters"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"x", "=", 
+       RowBox[{"Prepend", "[", 
+        RowBox[{
+         RowBox[{"LinearSolve", "[", 
+          RowBox[{"matrix", ",", "b"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"1", "/", 
+           RowBox[{"(", 
+            RowBox[{"2", 
+             RowBox[{"Sqrt", "[", "Pi", "]"}]}], ")"}]}], "//", "N"}]}], 
+        "]"}]}]}]}], 
+    RowBox[{"(*", 
+     RowBox[{"prepend", " ", "c00"}], "*)"}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.579351023081375*^9, 3.579351051273988*^9}, {
+  3.5793525561280603`*^9, 3.5793525565680857`*^9}}],
+
+Cell["\<\
+showConvegence plots the magnitude of coefficients, they should be small for \
+high indices.\
+\>", "Text",
+ CellChangeTimes->{{3.579350542706899*^9, 3.5793505685303764`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"showConvergence", "[", "params___", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "x", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"x", "=", 
+       RowBox[{"Abs", "[", 
+        RowBox[{"solveAugmented", "[", "params", "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"ListLogPlot", "[", 
+         RowBox[{"x", ",", 
+          RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}], ",", 
+        RowBox[{"ListPlot", "[", 
+         RowBox[{"x", ",", 
+          RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}], ",", 
+        RowBox[{"ListLogLogPlot", "[", 
+         RowBox[{"x", ",", 
+          RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}]}], "}"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.579350377902473*^9, 3.579350422189006*^9}, 
+   3.5793504618852763`*^9, {3.5793518072752285`*^9, 3.5793518256342783`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Load augmented matrix from file\
+\>", "Subtitle",
+ CellChangeTimes->{{3.579349923871504*^9, 3.579349936486225*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"maxl", " ", "=", " ", "100"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Get", "[", 
+  RowBox[{"ToString", "[", 
+   RowBox[{"StringForm", "[", 
+    RowBox[{"\"\<augmentedMatrix_lmax``.mx\>\"", ",", "maxl"}], "]"}], "]"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Dimensions", "[", "sparseAugmented", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixPlot", "[", "sparseAugmented", "]"}]}], "Input",
+ CellChangeTimes->{{3.579349904199379*^9, 3.579349904559399*^9}, {
+  3.579350530533203*^9, 3.5793505314832573`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Check convergence for some particular values of the parameters\
+\>", "Subtitle",
+ CellChangeTimes->{{3.579350692657476*^9, 3.5793507095854445`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"showConvergence", "[", 
+  RowBox[{"50", ",", 
+   RowBox[{"1", "/", "60"}], ",", "0.0"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"showConvergence", "[", 
+  RowBox[{"10", ",", "0.01", ",", "0.01"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.579350424369131*^9, 3.5793504365238256`*^9}, {
+  3.5793507158418016`*^9, 3.579350724234282*^9}, {3.5793517577633963`*^9, 
+  3.579351779714652*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Extract angular averages etc from the coefficients\
+\>", "Section",
+ CellChangeTimes->{{3.57935088591253*^9, 3.579350899008279*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"c00idx", " ", "=", " ", 
+   RowBox[{"sparseindex", "[", 
+    RowBox[{"0", ",", "0"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c20idx", " ", "=", " ", 
+   RowBox[{"sparseindex", "[", 
+    RowBox[{"2", ",", "0"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c22imidx", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"sparseindex", "[", 
+     RowBox[{"2", ",", "2"}], "]"}], "+", "1"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c40idx", " ", "=", " ", 
+   RowBox[{"sparseindex", "[", 
+    RowBox[{"4", ",", "0"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c44idx", " ", "=", " ", 
+   RowBox[{"sparseindex", "[", 
+    RowBox[{"4", ",", "4"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.579351075576378*^9, 3.5793511080632358`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"sinSqrTheta", "[", "x_", "]"}], ":=", 
+   RowBox[{"1", "-", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FractionBox["2", "3"], " ", 
+       SqrtBox["\[Pi]"], 
+       RowBox[{"x", "[", 
+        RowBox[{"[", "c00idx", "]"}], "]"}]}], "+", 
+      RowBox[{
+       FractionBox["4", "3"], " ", 
+       SqrtBox[
+        FractionBox["\[Pi]", "5"]], 
+       RowBox[{"x", "[", 
+        RowBox[{"[", "c20idx", "]"}], "]"}]}]}], ")"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.5793511309445443`*^9, 3.5793511608652563`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+For example, reproduce a row from table 6c of Brenner 1974:\
+\>", "Subtitle",
+ CellChangeTimes->{{3.5793516039315977`*^9, 3.579351635754418*^9}, {
+  3.5793518568090615`*^9, 3.5793518570570755`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"solveAugmented", "[", 
+      RowBox[{"l", ",", 
+       RowBox[{"1", "/", "10"}], ",", "0.0"}], "]"}], "//", "sinSqrTheta"}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{"l", ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "7", ",", "10", ",", 
+        "16", ",", "25", ",", "50"}], "}"}]}], "}"}]}], "]"}], "//", 
+  "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.5793511628023667`*^9, 3.5793511663425694`*^9}, {
+  3.579351197374344*^9, 3.579351209470036*^9}, {3.5793516392596183`*^9, 
+  3.5793516881954174`*^9}, {3.579351738227279*^9, 3.579351739586357*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Reproduce figs for paper (export data)\
+\>", "Section",
+ CellChangeTimes->{{3.5793519596409435`*^9, 3.579351966840355*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"logspace", "[", 
+    RowBox[{"a_", ",", "b_", ",", "n_"}], "]"}], ":=", 
+   RowBox[{"10.0", "^", 
+    RowBox[{"Range", "[", 
+     RowBox[{"a", ",", "b", ",", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"b", "-", "a"}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"n", "-", "1"}], ")"}]}]}], "]"}]}]}], ";", " ", 
+  RowBox[{"(*", "helper", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.5793519747528076`*^9, 3.5793519779529905`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Figure 1 (function of Pe, various St)\
+\>", "Subtitle",
+ CellChangeTimes->{{3.5793520414006195`*^9, 3.579352048664035*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"pes", "=", 
+  RowBox[{"logspace", "[", 
+   RowBox[{"0", ",", "7", ",", "30"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"sts", "=", 
+  RowBox[{"Prepend", "[", 
+   RowBox[{
+    RowBox[{"logspace", "[", 
+     RowBox[{
+      RowBox[{"-", "4"}], ",", 
+      RowBox[{"-", "1"}], ",", "4"}], "]"}], ",", "0.0"}], "]"}]}]}], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"fig1prolate5", "=", 
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"ParallelTable", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"solveAugmented", "[", 
+         RowBox[{"5", ",", 
+          RowBox[{"1", "/", "pe"}], ",", "st"}], "]"}], "//", "sinSqrTheta"}],
+        ",", 
+       RowBox[{"{", 
+        RowBox[{"pe", ",", "pes"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"st", ",", "sts"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fig1oblate5", "=", 
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"ParallelTable", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"solveAugmented", "[", 
+         RowBox[{
+          RowBox[{"1", "/", "5"}], ",", 
+          RowBox[{"1", "/", "pe"}], ",", "st"}], "]"}], "//", "sinSqrTheta"}],
+        ",", 
+       RowBox[{"{", 
+        RowBox[{"pe", ",", "pes"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"st", ",", "sts"}], "}"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.5793520744965124`*^9, 3.579352082448968*^9}, {
+  3.579352121240186*^9, 3.579352189824109*^9}, {3.5793522281933036`*^9, 
+  3.579352236376772*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<fig1.h5\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"pes", ",", "sts", ",", "fig1prolate5", ",", "fig1oblate5"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<Datasets\>\"", ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<pes\>\"", ",", "\"\<sts\>\"", ",", "\"\<prolate5\>\"", ",", 
+       "\"\<oblate5\>\""}], "}"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.57935228634363*^9, 3.5793523172143955`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Figure 2 (function of PeSt, various k=St/Pe)\
+\>", "Subtitle",
+ CellChangeTimes->{{3.5793523406457357`*^9, 3.5793523821171074`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"pests", "=", 
+   RowBox[{"logspace", "[", 
+    RowBox[{
+     RowBox[{"-", "6"}], ",", "3", ",", "20"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ks", "=", 
+   RowBox[{"logspace", "[", 
+    RowBox[{
+     RowBox[{"-", "9"}], ",", 
+     RowBox[{"-", "3"}], ",", "7"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.5793524361421976`*^9, 3.579352468790065*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"fig2prolate5", "=", 
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"ParallelTable", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"solveAugmented", "[", 
+         RowBox[{"5", ",", 
+          RowBox[{"1", "/", 
+           RowBox[{"Sqrt", "[", 
+            RowBox[{"pest", "/", "k"}], "]"}]}], ",", 
+          RowBox[{"Sqrt", "[", 
+           RowBox[{"k", " ", "pest"}], "]"}]}], "]"}], "//", "sinSqrTheta"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"pest", ",", "pests"}], "}"}]}], "]"}], "\[IndentingNewLine]",
+      ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "ks"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fig2oblate5", "=", 
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"ParallelTable", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"solveAugmented", "[", 
+         RowBox[{
+          RowBox[{"1", "/", "5"}], ",", 
+          RowBox[{"1", "/", 
+           RowBox[{"Sqrt", "[", 
+            RowBox[{"pest", "/", "k"}], "]"}]}], ",", 
+          RowBox[{"Sqrt", "[", 
+           RowBox[{"k", " ", "pest"}], "]"}]}], "]"}], "//", "sinSqrTheta"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"pest", ",", "pests"}], "}"}]}], "]"}], "\[IndentingNewLine]",
+      ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "ks"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.579352409630681*^9, 3.5793524621746864`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<fig2.h5\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"pests", ",", "ks", ",", "fig2prolate5", ",", "fig2oblate5"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<Datasets\>\"", ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<pests\>\"", ",", "\"\<ks\>\"", ",", "\"\<prolate5\>\"", ",", 
+       "\"\<oblate5\>\""}], "}"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.579352481349783*^9, 3.5793524950055647`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.5793523870623903`*^9, 3.579352467021964*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+Evaluator->"Sixth",
+WindowSize->{1195, 1198},
+WindowMargins->{{Automatic, 555}, {35, Automatic}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (November 20, 2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 114, 1, 90, "Title"],
+Cell[696, 25, 115, 1, 79, "Section"],
+Cell[CellGroupData[{
+Cell[836, 30, 149, 3, 49, "Subtitle"],
+Cell[988, 35, 562, 18, 47, "Input"],
+Cell[1553, 55, 2880, 74, 172, "Input"],
+Cell[4436, 131, 184, 4, 30, "Text"],
+Cell[4623, 137, 1000, 25, 92, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5660, 167, 125, 3, 49, "Subtitle"],
+Cell[5788, 172, 550, 11, 92, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6375, 188, 158, 3, 49, "Subtitle"],
+Cell[6536, 193, 410, 8, 52, "Input"],
+Cell[CellGroupData[{
+Cell[6971, 205, 142, 3, 79, "Section"],
+Cell[7116, 210, 835, 23, 112, "Input"],
+Cell[7954, 235, 572, 18, 59, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8575, 259, 208, 4, 49, "Subtitle"],
+Cell[8786, 265, 696, 18, 31, "Input"],
+Cell[CellGroupData[{
+Cell[9507, 287, 133, 3, 79, "Section"],
+Cell[9643, 292, 490, 14, 31, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10182, 312, 133, 3, 49, "Subtitle"],
+Cell[10318, 317, 352, 10, 52, "Input"],
+Cell[10673, 329, 1286, 37, 132, "Input"],
+Cell[11962, 368, 473, 12, 31, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12472, 385, 142, 3, 49, "Subtitle"],
+Cell[12617, 390, 419, 13, 52, "Input"],
+Cell[13039, 405, 1512, 44, 152, "Input"],
+Cell[14554, 451, 476, 12, 31, "Input"],
+Cell[15033, 465, 92, 1, 31, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
