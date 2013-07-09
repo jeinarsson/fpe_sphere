@@ -30,6 +30,8 @@ License
 This program is released under the MIT License: http://opensource.org/licenses/MIT
 
 Copyright (c) 2013 Jonas Einarsson
+Origov. 6B, 41296 Gothenburg, Sweden
+jonas.einarsson@physics.gu.se
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
