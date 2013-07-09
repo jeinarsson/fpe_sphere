@@ -10,16 +10,42 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    532552,      13048]
-NotebookOptionsPosition[    530413,      12976]
-NotebookOutlinePosition[    530781,      12992]
-CellTagsIndexPosition[    530738,      12989]
+NotebookDataLength[    534089,      13075]
+NotebookOptionsPosition[    531920,      13002]
+NotebookOutlinePosition[    532288,      13018]
+CellTagsIndexPosition[    532245,      13015]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+Cell[TextData[{
+ "This ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " notebook is released under the MIT License\n\nCopyright (c) 2013 Jonas \
+Einarsson\n\nPermission is hereby granted, free of charge, to any person \
+obtaining\na copy of this software and associated documentation files (the\n\
+\[OpenCurlyDoubleQuote]Software\[CloseCurlyDoubleQuote]), to deal in the \
+Software without restriction, including\nwithout limitation the rights to \
+use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell \
+copies of the Software, and to\npermit persons to whom the Software is \
+furnished to do so, subject to\nthe following conditions:\n\nThe above \
+copyright notice and this permission notice shall be\nincluded in all copies \
+or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \
+\[OpenCurlyDoubleQuote]AS IS\[CloseCurlyDoubleQuote], WITHOUT WARRANTY OF ANY \
+KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n\
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\nNONINFRINGEMENT. IN NO \
+EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\nLIABLE FOR ANY CLAIM, \
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\nOF CONTRACT, TORT OR \
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\nWITH THE SOFTWARE OR THE \
+USE OR OTHER DEALINGS IN THE SOFTWARE."
+}], "Text",
+ CellChangeTimes->{{3.582377269961446*^9, 3.582377283832239*^9}, {
+  3.5823773275917416`*^9, 3.582377335216178*^9}, {3.582377380999797*^9, 
+  3.5823773818398447`*^9}}],
 
 Cell[CellGroupData[{
+
 Cell["\<\
 Assemble sparse matrices from the matrix elements\
 \>", "Title",
@@ -12991,63 +13017,64 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
+Cell[557, 20, 1504, 24, 429, "Text"],
 Cell[CellGroupData[{
-Cell[579, 22, 142, 3, 144, "Title"],
-Cell[724, 27, 430, 8, 85, "Subsubtitle"],
-Cell[1157, 37, 359, 7, 68, "Text"],
+Cell[2086, 48, 142, 3, 144, "Title"],
+Cell[2231, 53, 430, 8, 85, "Subsubtitle"],
+Cell[2664, 63, 359, 7, 68, "Text"],
 Cell[CellGroupData[{
-Cell[1541, 48, 143, 3, 79, "Section"],
-Cell[1687, 53, 169, 3, 30, "Text"],
-Cell[1859, 58, 398951, 9565, 8639, InheritFromParent]
+Cell[3048, 74, 143, 3, 79, "Section"],
+Cell[3194, 79, 169, 3, 30, "Text"],
+Cell[3366, 84, 398951, 9565, 8801, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[400847, 9628, 195, 4, 49, "Subtitle"],
-Cell[401045, 9634, 30317, 791, 903, "Input"],
+Cell[402354, 9654, 195, 4, 49, "Subtitle"],
+Cell[402552, 9660, 30317, 791, 903, "Input"],
 Cell[CellGroupData[{
-Cell[431387, 10429, 115, 1, 79, "Section"],
-Cell[431505, 10432, 5052, 111, 492, "Input"]
+Cell[432894, 10455, 115, 1, 79, "Section"],
+Cell[433012, 10458, 5052, 111, 492, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[436606, 10549, 95, 1, 49, "Subtitle"],
+Cell[438113, 10575, 95, 1, 49, "Subtitle"],
 Cell[CellGroupData[{
-Cell[436726, 10554, 589, 11, 112, "Input"],
-Cell[437318, 10567, 72, 1, 23, "Print"],
-Cell[437393, 10570, 74, 1, 31, "Output"],
-Cell[437470, 10573, 1658, 36, 378, "Output"],
-Cell[439131, 10611, 70161, 1843, 1079, "Output"]
+Cell[438233, 10580, 589, 11, 112, "Input"],
+Cell[438825, 10593, 72, 1, 23, "Print"],
+Cell[438900, 10596, 74, 1, 31, "Output"],
+Cell[438977, 10599, 1658, 36, 378, "Output"],
+Cell[440638, 10637, 70161, 1843, 1079, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[509329, 12459, 113, 1, 79, "Section"],
-Cell[509445, 12462, 323, 6, 49, "Text"],
-Cell[509771, 12470, 184, 4, 30, "Text"],
-Cell[509958, 12476, 1359, 41, 69, "Input"],
-Cell[511320, 12519, 144, 3, 30, "Text"],
-Cell[511467, 12524, 11870, 261, 1272, "Input"]
+Cell[510836, 12485, 113, 1, 79, "Section"],
+Cell[510952, 12488, 323, 6, 49, "Text"],
+Cell[511278, 12496, 184, 4, 30, "Text"],
+Cell[511465, 12502, 1359, 41, 69, "Input"],
+Cell[512827, 12545, 144, 3, 30, "Text"],
+Cell[512974, 12550, 11870, 261, 1272, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[523386, 12791, 95, 1, 49, "Subtitle"],
+Cell[524893, 12817, 95, 1, 49, "Subtitle"],
 Cell[CellGroupData[{
-Cell[523506, 12796, 471, 11, 112, "Input"],
-Cell[523980, 12809, 72, 1, 23, "Print"],
-Cell[524055, 12812, 77, 1, 31, "Output"],
-Cell[524135, 12815, 2973, 57, 378, "Output"]
+Cell[525013, 12822, 471, 11, 112, "Input"],
+Cell[525487, 12835, 72, 1, 23, "Print"],
+Cell[525562, 12838, 77, 1, 31, "Output"],
+Cell[525642, 12841, 2973, 57, 378, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[527145, 12877, 193, 2, 113, "Section"],
+Cell[528652, 12903, 193, 2, 113, "Section"],
 Cell[CellGroupData[{
-Cell[527363, 12883, 1470, 40, 112, "Input"],
-Cell[528836, 12925, 122, 2, 23, "Print"],
-Cell[528961, 12929, 457, 14, 31, "Output"]
+Cell[528870, 12909, 1470, 40, 112, "Input"],
+Cell[530343, 12951, 122, 2, 23, "Print"],
+Cell[530468, 12955, 457, 14, 31, "Output"]
 }, Open  ]],
-Cell[529433, 12946, 122, 2, 31, "Input"]
+Cell[530940, 12972, 122, 2, 31, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[529604, 12954, 103, 1, 49, "Subtitle"],
-Cell[529710, 12957, 579, 12, 92, "Input"],
-Cell[530292, 12971, 93, 1, 31, "Input"]
+Cell[531111, 12980, 103, 1, 49, "Subtitle"],
+Cell[531217, 12983, 579, 12, 92, "Input"],
+Cell[531799, 12997, 93, 1, 31, "Input"]
 }, Open  ]]
 }, Open  ]]
 }

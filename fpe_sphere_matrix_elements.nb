@@ -10,16 +10,42 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    703693,      17830]
-NotebookOptionsPosition[    700146,      17714]
-NotebookOutlinePosition[    700512,      17730]
-CellTagsIndexPosition[    700469,      17727]
+NotebookDataLength[    705242,      17857]
+NotebookOptionsPosition[    701653,      17740]
+NotebookOutlinePosition[    702019,      17756]
+CellTagsIndexPosition[    701976,      17753]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+Cell[TextData[{
+ "This ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " notebook is released under the MIT License\n\nCopyright (c) 2013 Jonas \
+Einarsson\n\nPermission is hereby granted, free of charge, to any person \
+obtaining\na copy of this software and associated documentation files (the\n\
+\[OpenCurlyDoubleQuote]Software\[CloseCurlyDoubleQuote]), to deal in the \
+Software without restriction, including\nwithout limitation the rights to \
+use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell \
+copies of the Software, and to\npermit persons to whom the Software is \
+furnished to do so, subject to\nthe following conditions:\n\nThe above \
+copyright notice and this permission notice shall be\nincluded in all copies \
+or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \
+\[OpenCurlyDoubleQuote]AS IS\[CloseCurlyDoubleQuote], WITHOUT WARRANTY OF ANY \
+KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n\
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\nNONINFRINGEMENT. IN NO \
+EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\nLIABLE FOR ANY CLAIM, \
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\nOF CONTRACT, TORT OR \
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\nWITH THE SOFTWARE OR THE \
+USE OR OTHER DEALINGS IN THE SOFTWARE."
+}], "Text",
+ CellChangeTimes->{{3.582377269961446*^9, 3.582377283832239*^9}, {
+  3.5823773275917416`*^9, 3.582377335216178*^9}, {3.582377380999797*^9, 
+  3.5823773818398447`*^9}}],
 
 Cell[CellGroupData[{
+
 Cell["\<\
 Compute matrix elements of Fokker-Planck Equation on the sphere.\
 \>", "Title",
@@ -17729,106 +17755,107 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
+Cell[557, 20, 1504, 24, 429, "Text"],
 Cell[CellGroupData[{
-Cell[579, 22, 155, 3, 144, "Title"],
-Cell[737, 27, 313, 7, 51, "Text"],
-Cell[1053, 36, 271, 6, 68, "Text"],
-Cell[1327, 44, 777, 23, 72, "Input"],
-Cell[2107, 69, 149, 3, 79, "Section"],
+Cell[2086, 48, 155, 3, 144, "Title"],
+Cell[2244, 53, 313, 7, 51, "Text"],
+Cell[2560, 62, 271, 6, 68, "Text"],
+Cell[2834, 70, 777, 23, 72, "Input"],
+Cell[3614, 95, 149, 3, 79, "Section"],
 Cell[CellGroupData[{
-Cell[2281, 76, 128, 3, 49, "Subtitle"],
+Cell[3788, 102, 128, 3, 49, "Subtitle"],
 Cell[CellGroupData[{
-Cell[2434, 83, 1639, 53, 152, "Input"],
-Cell[4076, 138, 485, 15, 46, "Output"]
+Cell[3941, 109, 1639, 53, 152, "Input"],
+Cell[5583, 164, 485, 15, 46, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4610, 159, 187, 2, 49, "Subtitle"],
-Cell[4800, 163, 255, 7, 30, "Text"],
-Cell[5058, 172, 278, 5, 49, "Text"],
-Cell[5339, 179, 375, 9, 30, "Text"],
-Cell[5717, 190, 9643, 239, 412, "Input"],
-Cell[15363, 431, 142, 2, 31, "Input"],
-Cell[15508, 435, 154, 3, 30, "Text"],
-Cell[15665, 440, 357, 8, 31, "Input"],
+Cell[6117, 185, 187, 2, 49, "Subtitle"],
+Cell[6307, 189, 255, 7, 30, "Text"],
+Cell[6565, 198, 278, 5, 49, "Text"],
+Cell[6846, 205, 375, 9, 30, "Text"],
+Cell[7224, 216, 9643, 239, 412, "Input"],
+Cell[16870, 457, 142, 2, 31, "Input"],
+Cell[17015, 461, 154, 3, 30, "Text"],
+Cell[17172, 466, 357, 8, 31, "Input"],
 Cell[CellGroupData[{
-Cell[16047, 452, 105, 1, 79, "Section"],
-Cell[16155, 455, 140, 3, 30, "Text"],
-Cell[16298, 460, 1222, 32, 72, "Input"],
-Cell[17523, 494, 256, 5, 30, "Text"],
-Cell[17782, 501, 1543, 40, 152, "Input"],
-Cell[19328, 543, 176, 2, 30, "Text"],
+Cell[17554, 478, 105, 1, 79, "Section"],
+Cell[17662, 481, 140, 3, 30, "Text"],
+Cell[17805, 486, 1222, 32, 72, "Input"],
+Cell[19030, 520, 256, 5, 30, "Text"],
+Cell[19289, 527, 1543, 40, 152, "Input"],
+Cell[20835, 569, 176, 2, 30, "Text"],
 Cell[CellGroupData[{
-Cell[19529, 549, 274, 7, 31, "Input"],
-Cell[19806, 558, 1339, 45, 106, "Output"]
+Cell[21036, 575, 274, 7, 31, "Input"],
+Cell[21313, 584, 1339, 45, 106, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[21172, 607, 172, 4, 79, "Section"]
+Cell[22679, 633, 172, 4, 79, "Section"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21381, 616, 287, 5, 49, "Subtitle"],
-Cell[21671, 623, 209, 4, 30, "Text"],
-Cell[21883, 629, 2190, 62, 192, "Input"],
-Cell[24076, 693, 166, 3, 30, "Text"],
-Cell[24245, 698, 1058, 31, 112, "Input"],
+Cell[22888, 642, 287, 5, 49, "Subtitle"],
+Cell[23178, 649, 209, 4, 30, "Text"],
+Cell[23390, 655, 2190, 62, 192, "Input"],
+Cell[25583, 719, 166, 3, 30, "Text"],
+Cell[25752, 724, 1058, 31, 112, "Input"],
 Cell[CellGroupData[{
-Cell[25328, 733, 166, 2, 37, "Subsubtitle"],
-Cell[25497, 737, 229, 5, 30, "Text"],
-Cell[25729, 744, 1147, 33, 112, "Input"],
-Cell[26879, 779, 170, 4, 30, "Text"],
-Cell[27052, 785, 1631, 47, 132, "Input"],
-Cell[28686, 834, 186, 4, 30, "Text"],
-Cell[28875, 840, 3399, 99, 192, "Input"],
-Cell[32277, 941, 129, 3, 79, "Section"]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[32455, 950, 94, 1, 49, "Subtitle"],
-Cell[CellGroupData[{
-Cell[32574, 955, 359, 11, 31, "Input"],
-Cell[32936, 968, 14740, 406, 1020, "Output"]
+Cell[26835, 759, 166, 2, 37, "Subsubtitle"],
+Cell[27004, 763, 229, 5, 30, "Text"],
+Cell[27236, 770, 1147, 33, 112, "Input"],
+Cell[28386, 805, 170, 4, 30, "Text"],
+Cell[28559, 811, 1631, 47, 132, "Input"],
+Cell[30193, 860, 186, 4, 30, "Text"],
+Cell[30382, 866, 3399, 99, 192, "Input"],
+Cell[33784, 967, 129, 3, 79, "Section"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[47725, 1380, 203, 4, 77, "Subtitle"],
+Cell[33962, 976, 94, 1, 49, "Subtitle"],
 Cell[CellGroupData[{
-Cell[47953, 1388, 662, 19, 92, "Input"],
-Cell[48618, 1409, 11140, 368, 1031, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[59795, 1782, 192, 4, 79, "Section"],
-Cell[59990, 1788, 328, 6, 49, "Text"],
-Cell[CellGroupData[{
-Cell[60343, 1798, 690, 18, 72, "Input"],
-Cell[61036, 1818, 6378, 182, 218, "Output"]
+Cell[34081, 981, 359, 11, 31, "Input"],
+Cell[34443, 994, 14740, 406, 1020, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[67441, 2004, 117, 1, 79, "Section"]
+Cell[CellGroupData[{
+Cell[49232, 1406, 203, 4, 77, "Subtitle"],
+Cell[CellGroupData[{
+Cell[49460, 1414, 662, 19, 92, "Input"],
+Cell[50125, 1435, 11140, 368, 1031, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[67595, 2010, 334, 4, 38, "Subtitle"],
-Cell[67932, 2016, 160, 3, 31, "Input"],
+Cell[61302, 1808, 192, 4, 79, "Section"],
+Cell[61497, 1814, 328, 6, 49, "Text"],
 Cell[CellGroupData[{
-Cell[68117, 2023, 967, 27, 52, "Input"],
-Cell[69087, 2052, 5789, 207, 172, "Output"],
-Cell[74879, 2261, 3550, 131, 112, "Output"]
+Cell[61850, 1824, 690, 18, 72, "Input"],
+Cell[62543, 1844, 6378, 182, 218, "Output"]
+}, Open  ]]
 }, Open  ]],
-Cell[78444, 2395, 375, 6, 49, "Text"],
-Cell[78822, 2403, 392, 8, 68, "Text"],
-Cell[79217, 2413, 311, 9, 31, "Input"],
-Cell[79531, 2424, 246, 4, 30, "Text"],
-Cell[CellGroupData[{
-Cell[79802, 2432, 484, 15, 31, "Input"],
-Cell[80289, 2449, 427, 8, 52, "Output"]
+Cell[68948, 2030, 117, 1, 79, "Section"]
 }, Open  ]],
-Cell[80731, 2460, 1083, 26, 112, "Input"],
-Cell[81817, 2488, 193, 4, 30, "Text"],
-Cell[82013, 2494, 334, 7, 31, "Input"],
-Cell[82350, 2503, 206, 4, 49, "Text"],
 Cell[CellGroupData[{
-Cell[82581, 2511, 1725, 47, 112, "Input"],
-Cell[84309, 2560, 227173, 5614, 4833, "Output"],
-Cell[311485, 8176, 388621, 9533, 8519, "Output"]
+Cell[69102, 2036, 334, 4, 38, "Subtitle"],
+Cell[69439, 2042, 160, 3, 31, "Input"],
+Cell[CellGroupData[{
+Cell[69624, 2049, 967, 27, 52, "Input"],
+Cell[70594, 2078, 5789, 207, 172, "Output"],
+Cell[76386, 2287, 3550, 131, 112, "Output"]
+}, Open  ]],
+Cell[79951, 2421, 375, 6, 49, "Text"],
+Cell[80329, 2429, 392, 8, 68, "Text"],
+Cell[80724, 2439, 311, 9, 31, "Input"],
+Cell[81038, 2450, 246, 4, 30, "Text"],
+Cell[CellGroupData[{
+Cell[81309, 2458, 484, 15, 31, "Input"],
+Cell[81796, 2475, 427, 8, 52, "Output"]
+}, Open  ]],
+Cell[82238, 2486, 1083, 26, 112, "Input"],
+Cell[83324, 2514, 193, 4, 30, "Text"],
+Cell[83520, 2520, 334, 7, 31, "Input"],
+Cell[83857, 2529, 206, 4, 49, "Text"],
+Cell[CellGroupData[{
+Cell[84088, 2537, 1725, 47, 112, "Input"],
+Cell[85816, 2586, 227173, 5614, 4833, "Output"],
+Cell[312992, 8202, 388621, 9533, 8519, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
